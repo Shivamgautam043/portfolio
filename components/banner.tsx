@@ -32,7 +32,7 @@ export default function Banner() {
             </a>
             ) and{" "}
             <a
-              href="https://https://github.com/Shivamgautam043"
+              href="https://github.com/Shivamgautam043"
               target="_blank"
               rel="noopener noreferrer"
               className="dark:text-zinc-300 text-zinc-800 underline"

@@ -122,7 +122,7 @@ export default function Header() {
             <li>
               {" "}
               <a
-                href="https://https//github.com/Shivamgautam043"
+                href="https://github.com/Shivamgautam043"
                 className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
                 data-astro-prefetch="load"
                 target="_blank"
