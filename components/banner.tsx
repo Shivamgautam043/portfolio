@@ -10,7 +10,7 @@ export default function Banner() {
             Software developer, designer.
           </h1>
           <p className="text-xl font-medium dark:font-normal text-zinc-700 leading-relaxed dark:text-zinc-400">
-            Welcome to my corner of the internet! I'm Shivam, a software
+            Welcome to my corner of the internet! I&apos;m Shivam, a software
             engineer at{" "}
             <a
               href="https://growthjockey.com"
