@@ -18,7 +18,7 @@ export default function Banner() {
               rel="noopener noreferrer"
               className="dark:text-zinc-300 text-zinc-800 underline"
             >
-              Growth Jockey 
+              Growth Jockey
             </a>{" "}
             and the author/maintainer of some exciting projects. This page is a
             list of my creations and musings, you can also find me on Twitter (
@@ -58,14 +58,13 @@ export default function Banner() {
               Auli, 2024
             </div>
           </div>
-
-          {/* <div className="-rotate-3 overflow-hidden sm:absolute sm:overflow-visible py-5 -mt-5 sm:left-8">
-            <div className="scale-50">
-              <GitHubCalendar username="Shivamgautam043" />
-            </div>
-          </div> */}
         </div>
       </section>
+      <div className="grid grid-cols-1 w-full place-content-center place-items-center">
+        <div className="">
+          <GitHubCalendar username="Shivamgautam043" />
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,10 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import {
+  HeaderDarkThemeIcon,
+  HeaderLigthTheameIcon,
+  HeaderSystemThemeIcon,
+} from "../utilites/svgs";
 
 export default function Header() {
   return (
@@ -134,129 +140,81 @@ export default function Header() {
           </ul>{" "}
         </nav>{" "}
       </div>
-      <div className="sm:flex-grow flex justify-end">
-        {" "}
-        <button
-          aria-label="Toggle dark mode"
-          id="toggle-theme"
-          className="relative rounded-lg dark:bg-zinc-900 bg-white/90 p-1 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur"
-        >
-          {" "}
-          <div className="bg-gray-200 dark:bg-zinc-800 p-1 flex items-center rounded-md">
-            {" "}
-            <div className="size-5 flex items-center justify-center">
-              {" "}
-              <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
-            </div>{" "}
-            <div className="size-5 flex items-center justify-center">
-              {" "}
-              <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
-            </div>{" "}
-            <div className="size-5 flex items-center justify-center">
-              {" "}
-              <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
-            </div>{" "}
-            <div
-              id="theme-switcher"
-              className="size-5 rounded-[5px] bg-white dark:bg-zinc-900 shadow absolute flex items-center justify-center animate-transform duration-100 ease-in-out text-zinc-600 dark:text-zinc-200"
-              style={{ transform: "translateX(40px);" }}
-            >
-              {" "}
-              <svg
-                id="sw-i-light"
-                style={{ display: "none" }}
-                className="size-3.5"
-                viewBox="0 0 24 24"
-                width="1.2em"
-                height="1.2em"
-              >
-                <path
-                  fill="currentColor"
-                  d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75M7.5 12a4.5 4.5 0 1 1 9 0a4.5 4.5 0 0 1-9 0m11.394-5.834a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061zM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75m-3.916 6.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06zM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18m-4.242-.697a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061zM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12m.697-4.243a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06z"
-                ></path>
-              </svg>{" "}
-              <svg
-                id="sw-i-dark"
-                style={{ display: "block" }}
-                className="size-3.5"
-                viewBox="0 0 24 24"
-                width="1.2em"
-                height="1.2em"
-              >
-                <path
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  d="M9.528 1.718a.75.75 0 0 1 .162.819A9 9 0 0 0 9 6a9 9 0 0 0 9 9a9 9 0 0 0 3.463-.69a.75.75 0 0 1 .981.98a10.5 10.5 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5c0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>{" "}
-              <svg
-                id="sw-i-auto"
-                style={{ display: "none" }}
-                className="size-3.5"
-                viewBox="0 0 24 24"
-                width="1.2em"
-                height="1.2em"
-              >
-                <path
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 0 1-.53 1.28h-9a.75.75 0 0 1-.53-1.28l.621-.622a2.25 2.25 0 0 0 .659-1.59V18h-3a3 3 0 0 1-3-3zm1.5 0v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>{" "}
-            </div>{" "}
-          </div>{" "}
-        </button>
-        {/* <script data-astro-exec=""> */}
-        {/* const themeOptions = ["light", "auto", "dark"];
+      <TheameButtons />
+    </header>
+  );
+}
 
-  function updateUI(theme) {
-    const positions = { light: "0px", auto: "20px", dark: "40px" };
-    const switcher = document.getElementById("theme-switcher");
-    switcher.style.transform = `translateX(${positions[theme]})`;
-
-    document.getElementById("sw-i-light").style.display =
-      theme === "light" ? "block" : "none";
-    document.getElementById("sw-i-auto").style.display =
-      theme === "auto" ? "block" : "none";
-    document.getElementById("sw-i-dark").style.display =
-      theme === "dark" ? "block" : "none";
-  }
-
-  function setTheme(theme) {
-    document.documentElement.classList.remove(...themeOptions);
-    localStorage.setItem("theme", theme);
-
-    if (theme === "auto") {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      document.documentElement.classList.add(prefersDark ? "dark" : "light");
-    } else {
-      document.documentElement.classList.add(theme);
-    }
-
-    updateUI(theme);
-  }
+function TheameButtons() {
+  const [currentTheme, setCurrentTheme] = useState<"light" | "system" | "dark">(
+    "dark"
+  );
 
   const toggleTheme = () => {
-    const currentTheme = localStorage.getItem("theme") || "auto";
-    const nextTheme =
-      themeOptions[
-        (themeOptions.indexOf(currentTheme) + 1) % themeOptions.length
-      ];
-    setTheme(nextTheme);
+    switch (currentTheme) {
+      case "dark": {
+        setCurrentTheme("light");
+        break;
+      }
+      case "light": {
+        setCurrentTheme("system");
+        break;
+      }
+      case "system": {
+        setCurrentTheme("dark");
+        break;
+      }
+      default: {
+        setCurrentTheme("dark");
+      }
+    }
   };
 
-  document.addEventListener("astro:page-load", () => {
-    setTheme(localStorage.getItem("theme") || "auto");
-    document
-      .getElementById("toggle-theme")
-      .addEventListener("click", toggleTheme);
-  });
-</script> </div> */}
-      </div>
-    </header>
+  return (
+    <div className="sm:flex-grow flex justify-end">
+      {" "}
+      <button
+        id="toggle-theme"
+        onClick={() => toggleTheme()}
+        className="relative rounded-lg dark:bg-zinc-900 bg-white/90 p-1 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur"
+      >
+        {" "}
+        <div className="bg-gray-200 dark:bg-zinc-800 p-1 flex items-center rounded-md">
+          {" "}
+          <div className="size-5 flex items-center justify-center">
+            {" "}
+            <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
+          </div>{" "}
+          <div className="size-5 flex items-center justify-center">
+            {" "}
+            <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
+          </div>{" "}
+          <div className="size-5 flex items-center justify-center">
+            {" "}
+            <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
+          </div>{" "}
+          <div
+            id="theme-switcher"
+            className="size-5 rounded-[5px] bg-white dark:bg-zinc-900 shadow absolute flex items-center justify-center transition-transform duration-100 ease-in-out text-zinc-600 dark:text-zinc-200"
+            style={{
+              transform:
+                currentTheme === "dark"
+                  ? "translateX(40px)"
+                  : currentTheme === "light"
+                  ? "translateX(0px)"
+                  : "translateX(20px)",
+            }}
+          >
+            {currentTheme === "dark" ? (
+              <HeaderDarkThemeIcon />
+            ) : currentTheme === "light" ? (
+              <HeaderLigthTheameIcon />
+            ) : (
+              <HeaderSystemThemeIcon />
+            )}
+          </div>{" "}
+        </div>{" "}
+      </button>
+    </div>
   );
 }

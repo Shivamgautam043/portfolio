@@ -1,7 +1,7 @@
 export function Footer() {
   return (
-    <footer className="fixed w-full bottom-0">
-      <footer className="max-w-6xl px-4 lg:px-8 mx-auto py-6 text-slate-500 flex items-center justify-between gap-4 flex-wrap bg-white dark:bg-[#0f0f0f] z-50">
+    <footer className="w-full mt-10 bg-white dark:bg-[#0f0f0f]">
+      <footer className="max-w-6xl px-4 lg:px-8 mx-auto py-6 text-slate-500 flex items-center justify-between gap-4 flex-wrap z-50">
         <span>© 2025 - Present Shivam Gautam</span>
 
         <nav className="flex items-center gap-4">
