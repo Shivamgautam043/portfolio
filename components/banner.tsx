@@ -60,7 +60,7 @@ export default function Banner() {
           </div>
         </div>
       </section>
-      <div className="grid grid-cols-1 w-full place-content-center place-items-center">
+      <div className="max-md:hidden grid grid-cols-1 w-full place-content-center place-items-center">
         <div className="">
           <GitHubCalendar username="Shivamgautam043" />
         </div>
