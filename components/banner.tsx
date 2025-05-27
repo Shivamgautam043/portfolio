@@ -1,9 +1,12 @@
+"use client";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import GitHubCalendar from "react-github-calendar";
 
 export default function Banner() {
   return (
     <div className="max-w-6xl px-4 lg:px-8 mx-auto bg-[#000000f2]">
+      <MatrixText />
       <section className="flex gap-12 flex-wrap my-16">
         <div className="max-w-2xl lg:w-[42rem]">
           <h1 className="text-5xl font-bold tracking-tight mb-3 dark:text-white">
@@ -65,6 +68,60 @@ export default function Banner() {
           <GitHubCalendar username="Shivamgautam043" />
         </div>
       </div>
+    </div>
+  );
+}
+
+function MatrixText() {
+  const [cursor, setCursor] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCursor((prev) => !prev);
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const text = "The Matrix has you...";
+  const [modifiedText, setModifiedText] = useState("");
+  const indexRef = useRef(0); // Persistent index
+  const directionRef = useRef("increasing"); // "increasing" or "decreasing"
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentIndex = indexRef.current;
+      const direction = directionRef.current;
+
+      if (direction === "increasing") {
+        const nextIndex = currentIndex + 1;
+        setModifiedText(text.slice(0, nextIndex));
+        indexRef.current = nextIndex;
+
+        if (nextIndex === text.length) {
+          directionRef.current = "decreasing";
+        }
+      } else {
+        const nextIndex = currentIndex - 1;
+        setModifiedText(text.slice(0, nextIndex));
+        indexRef.current = nextIndex;
+
+        if (nextIndex === 0) {
+          directionRef.current = "increasing";
+        }
+      }
+    }, 150);
+
+    return () => clearInterval(interval); // Cleanup
+  }, []);
+  return (
+    <div className="text-[#03A062] grid grid-flow-col place-content-start place-items-center">
+      <div
+        className={`h-6 w-[0.1px]`}
+      ></div>
+      {modifiedText}{" "}
+      <div
+        className={`${cursor === true ? "w-2" : "w-0"} h-4 bg-[#03A062]`}
+      ></div>
     </div>
   );
 }
