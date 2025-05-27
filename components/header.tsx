@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 
 export default function Header() {
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <header className="max-w-6xl px-4 lg:px-8 mx-auto py-8 flex flex-wrap items-center sm:justify-start justify-between gap-y-2 gap-x-2 sm:gap-x-5 relative z-20">
       <div className="gap-2 flex items-center sm:hidden">
@@ -150,7 +151,6 @@ function TheameButtons() {
   const [currentTheme, setCurrentTheme] = useState<"light" | "system" | "dark">(
     "dark"
   );
-
   const toggleTheme = () => {
     switch (currentTheme) {
       case "dark": {
