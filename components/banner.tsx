@@ -2,11 +2,20 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import GitHubCalendar from "react-github-calendar";
+import { ShivamLogo } from "../utilites/svgs";
 
 export default function Banner() {
   return (
     <div className="max-w-6xl px-4 lg:px-8 mx-auto bg-[#000000f2]">
       <MatrixText />
+      {/* <Image
+        src={
+          "https://res.cloudinary.com/duwfzddrs/image/upload/v1748460158/s-white-logo_wp2nbw.svg"
+        }
+        width={20}
+        height={20}
+        alt="s-logo"
+      /> */}
       <section className="flex gap-12 flex-wrap my-16">
         <div className="max-w-2xl lg:w-[42rem]">
           <h1 className="text-5xl font-bold tracking-tight mb-3 dark:text-white">
@@ -115,9 +124,7 @@ function MatrixText() {
   }, []);
   return (
     <div className="text-[#03A062] grid grid-flow-col place-content-start place-items-center">
-      <div
-        className={`h-6 w-[0.1px]`}
-      ></div>
+      <div className={`h-6 w-[0.1px]`}></div>
       {modifiedText}{" "}
       <div
         className={`${cursor === true ? "w-2" : "w-0"} h-4 bg-[#03A062]`}
