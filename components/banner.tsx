@@ -77,6 +77,10 @@ export default function Banner() {
           <GitHubCalendar username="Shivamgautam043" />
         </div>
       </div>
+      <div className="w-full">
+        <img src="https://res.cloudinary.com/duwfzddrs/image/upload/v1748461657/neo-desk_yi30jn.jpg" alt="" className="w-full"/>
+
+      </div>
     </div>
   );
 }
