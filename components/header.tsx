@@ -1,14 +1,34 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   HeaderDarkThemeIcon,
   HeaderLigthTheameIcon,
   HeaderSystemThemeIcon,
 } from "../utilites/svgs";
 import Link from "next/link";
+import { getSystemTheme } from "../utilites/utilitiesFunctions";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blogs" },
+    { label: "Bookmarks", href: "/bookmarks" },
+    { label: "Projects", href: "/projects" },
+    { label: "Uses", href: "/uses" },
+  ];
+  const socialLinks = [
+    {
+      label: "Twitter",
+      href: "https://x.com/ShivamG50827915",
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/Shivamgautam043",
+    },
+  ];
+  const pathname = usePathname();
   return (
     <header className="max-w-6xl px-4 lg:px-8 mx-auto py-8 flex flex-wrap items-center sm:justify-start justify-between gap-y-2 gap-x-2 sm:gap-x-5 relative z-20">
       <div className="gap-2 flex items-center sm:hidden">
@@ -35,122 +55,52 @@ export default function Header() {
         {" "}
         <nav>
           {" "}
-          <ul className="flex flex-col py-2 sm:py-0 sm:flex-row rounded-lg dark:bg-zinc-900 bg-white/90 px-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
-            {" "}
-            <li>
-              {" "}
-              <a
-                href="/"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 text-teal-500"
-                data-astro-prefetch="load"
-                target="_self"
-              >
-                {" "}
-                Home{" "}
-              </a>{" "}
-            </li>
-            <li>
-              {" "}
-              <a
-                href="/blog"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                data-astro-prefetch="load"
-                target="_self"
-              >
-                {" "}
-                Blog{" "}
-              </a>{" "}
-            </li>
-            <li>
-              {" "}
-              <a
-                href="/bookmarks"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                data-astro-prefetch="load"
-                target="_self"
-              >
-                {" "}
-                Bookmarks{" "}
-              </a>{" "}
-            </li>
-            <li>
-              {" "}
-              <a
-                href="/papershelf"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                data-astro-prefetch="load"
-                target="_self"
-              >
-                {" "}
-                Papershelf{" "}
-              </a>{" "}
-            </li>
-            <li>
-              {" "}
-              <a
-                href="/uses"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                data-astro-prefetch="load"
-                target="_self"
-              >
-                {" "}
-                Uses{" "}
-              </a>{" "}
-            </li>{" "}
-          </ul>{" "}
+          <div className="grid grid-flow-col py-2 max-sm:grid-flow-row rounded-lg dark:bg-zinc-900 bg-white/90 px-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <div key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${
+                      isActive ? "text-teal-500" : ""
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </nav>{" "}
         <nav>
-          {" "}
           <ul className="flex flex-col py-2 sm:py-0 sm:flex-row rounded-lg dark:bg-zinc-900 bg-white/90 px-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
-            {" "}
-            <li>
-              {" "}
-              <a
-                href="https://x.com/ShivamG50827915"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                data-astro-prefetch="load"
-                target="_blank"
-              >
-                {" "}
-                Twitter{" "}
-              </a>{" "}
-            </li>
-            {/* <li>
-              {" "}
-              <a
-                href="https://bsky.app/profile/shivam.dev"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                data-astro-prefetch="load"
-                target="_blank"
-              >
-                {" "}
-                Bluesky{" "}
-              </a>{" "}
-            </li> */}
-            <li>
-              {" "}
-              <a
-                href="https://github.com/Shivamgautam043"
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                data-astro-prefetch="load"
-                target="_blank"
-              >
-                {" "}
-                GitHub{" "}
-              </a>{" "}
-            </li>{" "}
-          </ul>{" "}
-        </nav>{" "}
+            {socialLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
+                  data-astro-prefetch="load"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      <TheameButtons />
+      <TheameChanger />
     </header>
   );
 }
 
-function TheameButtons() {
+function TheameChanger() {
   const [currentTheme, setCurrentTheme] = useState<"light" | "system" | "dark">(
     "dark"
   );
+
   const toggleTheme = () => {
     switch (currentTheme) {
       case "dark": {
@@ -170,6 +120,10 @@ function TheameButtons() {
       }
     }
   };
+
+  useEffect(() => {
+    console.log(getSystemTheme());
+  }, []);
 
   return (
     <div className="sm:flex-grow flex justify-end">

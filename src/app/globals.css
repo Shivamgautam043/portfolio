@@ -2,10 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ✅ Put this at global scope, outside @layer */
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  /* ✅ Move screen edge padding here */
+  --px-screen-edge: clamp(1rem, 4vw, 5rem);
+}
+
+/* ✅ Media query bhi global pe hi hona chahiye */
+@media (min-width: 1472px) {
+  :root {
+    --px-screen-edge: calc((100vw - 1280px) / 4);
+  }
+}
+
+@layer components {
+  .px-screen-edge {
+    padding-left: var(--px-screen-edge);
+    padding-right: var(--px-screen-edge);
+  }
 }
 
 @media (prefers-color-scheme: dark) {

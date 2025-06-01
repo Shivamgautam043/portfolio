@@ -2,11 +2,10 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import GitHubCalendar from "react-github-calendar";
-import { ShivamLogo } from "../utilites/svgs";
 
-export default function Banner() {
+export default function HeroSection() {
   return (
-    <div className="max-w-6xl px-4 lg:px-8 mx-auto bg-[#000000f2]">
+    <div className="max-w-6xl px-4 lg:px-8 mx-auto bg-[#000000f2] ">
       {/* <Image
         src={
           "https://res.cloudinary.com/duwfzddrs/image/upload/v1748460158/s-white-logo_wp2nbw.svg"
