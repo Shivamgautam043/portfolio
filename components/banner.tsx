@@ -7,7 +7,6 @@ import { ShivamLogo } from "../utilites/svgs";
 export default function Banner() {
   return (
     <div className="max-w-6xl px-4 lg:px-8 mx-auto bg-[#000000f2]">
-      <MatrixText />
       {/* <Image
         src={
           "https://res.cloudinary.com/duwfzddrs/image/upload/v1748460158/s-white-logo_wp2nbw.svg"
@@ -77,15 +76,21 @@ export default function Banner() {
           <GitHubCalendar username="Shivamgautam043" />
         </div>
       </div>
-      <div className="w-full">
-        <img src="https://res.cloudinary.com/duwfzddrs/image/upload/v1748461657/neo-desk_yi30jn.jpg" alt="" className="w-full"/>
-
+      <div className="w-full relative">
+        <img
+          src="https://res.cloudinary.com/duwfzddrs/image/upload/v1748461657/neo-desk_yi30jn.jpg"
+          alt=""
+          className="w-full"
+        />
+        <div className="absolute top-4 left-4">
+          <MatrixText/>
+        </div>
       </div>
     </div>
   );
 }
 
-function MatrixText() {
+export function MatrixText() {
   const [cursor, setCursor] = useState(true);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -97,8 +102,8 @@ function MatrixText() {
 
   const text = "The Matrix has you...";
   const [modifiedText, setModifiedText] = useState("");
-  const indexRef = useRef(0); // Persistent index
-  const directionRef = useRef("increasing"); // "increasing" or "decreasing"
+  const indexRef = useRef(0);
+  const directionRef = useRef("increasing");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -114,13 +119,7 @@ function MatrixText() {
           directionRef.current = "decreasing";
         }
       } else {
-        const nextIndex = currentIndex - 1;
-        setModifiedText(text.slice(0, nextIndex));
-        indexRef.current = nextIndex;
-
-        if (nextIndex === 0) {
-          directionRef.current = "increasing";
-        }
+      
       }
     }, 150);
 
