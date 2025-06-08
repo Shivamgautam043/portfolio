@@ -21,16 +21,7 @@ export default function HeroSection() {
           </h1>
           <p className="text-xl font-medium dark:font-normal text-zinc-700 leading-relaxed dark:text-zinc-400">
             Welcome to my corner of the internet! I&apos;m Shivam, a software
-            engineer at{" "}
-            <a
-              href="https://growthjockey.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="dark:text-zinc-300 text-zinc-800 underline"
-            >
-              Growth Jockey
-            </a>{" "}
-            and the author/maintainer of some exciting projects. This page is a
+            engineer and the author/maintainer of some exciting projects. This page is a
             list of my creations and musings, you can also find me on Twitter (
             <a
               href="https://x.com/ShivamG50827915"
