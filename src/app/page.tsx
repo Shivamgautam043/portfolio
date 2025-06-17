@@ -8,6 +8,7 @@ export default function Home() {
         <>
             <Header />
             <HeroSection />
+            <div className="h-10"></div>
             <Timer />
             <Footer />
         </>
