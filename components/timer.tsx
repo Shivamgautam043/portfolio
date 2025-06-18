@@ -169,7 +169,7 @@ export function Timer() {
                     >
                         <div className="grid grid-cols-1 ">
                             <div className="p-4">
-                                <div className="invisible">0</div>
+                                <div className="invisible">9</div>
                             </div>
                         </div>
                     </div>
