@@ -5,7 +5,7 @@ import GitHubCalendar from "react-github-calendar";
 
 export default function HeroSection() {
   return (
-    <div className="max-w-6xl px-4 lg:px-8 mx-auto bg-[#000000f2] ">
+    <div className="max-w-6xl px-4 lg:px-8 mx-auto bg-white dark:bg-[#000000f2] ">
       {/* <Image
         src={
           "https://res.cloudinary.com/duwfzddrs/image/upload/v1748460158/s-white-logo_wp2nbw.svg"
@@ -62,11 +62,11 @@ export default function HeroSection() {
         </div>
       </section>
       <div className="max-md:hidden grid grid-cols-1 w-full place-content-center place-items-center">
-        <div className="">
+        <div className="scale-75">
           <GitHubCalendar username="Shivamgautam043" />
         </div>
       </div>
-      <div className="w-full relative">
+      {/* <div className="w-full relative">
         <img
           src="https://res.cloudinary.com/duwfzddrs/image/upload/v1748461657/neo-desk_yi30jn.jpg"
           alt=""
@@ -75,7 +75,7 @@ export default function HeroSection() {
         <div className="absolute top-4 left-4">
           <MatrixText/>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -91,7 +91,7 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-      <TheameChanger />
+      {/* <TheameChanger /> */}
     </header>
   );
 }
