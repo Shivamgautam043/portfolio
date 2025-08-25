@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+
 export function ProjectSection() {
     return (
         <>
@@ -55,7 +58,7 @@ const projects: Project[] = [
             "Genre-based movie platform with real-time trailers, CRUD features, Firebase auth, and a personalized 'My List' for users.",
         color: "#f97316",
     },
-    
+
     {
         title: "Vizo",
         link: "https://github.com/Shivamgautam043/Video-Chat-App",
@@ -65,7 +68,18 @@ const projects: Project[] = [
         description:
             "Vizo is a real-time video chat application built with React, Socket.io, and WebRTC. It enables seamless peer-to-peer video calls with room-based connections and secure sessions.",
         color: "#49aef6"
+    },
+    {
+        title: "Bifrost",
+        link: "https://github.com/Shivamgautam043/bifrost",
+        logo: "https://res.cloudinary.com/duwfzddrs/image/upload/v1756146570/bifrost_2_zcda2y.png",
+        stars: "8",
+        tags: ["React", "Node.js", "Express", "JWT", "Authentication"],
+        description:
+            "Bifrost is a login and authentication app that provides secure user management using JWT-based authentication (in progress).",
+        color: "#4cafef"
     }
+
 
 ];
 
@@ -88,8 +102,11 @@ function ProjectCard({
     description,
     color,
 }: Project) {
+    const [isHover, setIsHover] = useState(false);
     return (
         <div
+            onMouseEnter={()=>setIsHover(true)}
+            onMouseLeave={()=>setIsHover(false)}
             style={{
                 ["--project-color" as any]: color,
                 ["--mouse-x" as any]: "235px",
@@ -106,7 +123,7 @@ function ProjectCard({
             >
                 <div className="flex items-start justify-between">
                     <div className="flex items-center gap-2 relative">
-                        <img src={logo} alt={title} className="w-auto h-8 rounded-md overflow-hidden" />
+                        <img src={logo} alt={title} className="w-auto h-8 rounded-md overflow-hidden transition-all duration-300"   style={{scale:isHover===true?1.25:1}}/>
                         <img
                             src={logo}
                             alt={`${title} blur`}
