@@ -8,8 +8,8 @@ export function ProjectSection() {
                     </h2>
                     <p className="text-lg text-zinc-700 leading-relaxed tracking-normal dark:text-zinc-400">
                         Overtime I have worked on and built multiple projects, some during work,
-                        some outside. Here's a humble list of those, several of them are
-                        open-source. If you're inspired by what you see, don't hesitate to dive
+                        some outside. Here{"'"}s a humble list of those, several of them are
+                        open-source. If you{"'"}re inspired by what you see, don{"'"}t hesitate to dive
                         into the code and share your ideas for improvement.
                     </p>
                 </div>

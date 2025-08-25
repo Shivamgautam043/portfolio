@@ -20,7 +20,7 @@ export default function HeroSection() {
             Software developer, designer.
           </h1>
           <p className="text-xl font-medium dark:font-normal text-zinc-700 leading-relaxed dark:text-zinc-400">
-            Welcome to my corner of the internet! I&apos;m Shivam, a software
+            Welcome to my corner of the internet! I{"'"}m Shivam, a software
             engineer and the author/maintainer of some exciting projects. This page is a
             list of my creations and musings, you can also find me on Twitter (
             <a
@@ -49,11 +49,9 @@ export default function HeroSection() {
             <img
               src="https://shivam.dev/_astro/me.gUlH0Jun_247FUu.webp"
               alt="Shivam, standing on a cliff facing the Himalayas."
-              loading="eager"
+              width={400}
+              height={400}
               className="w-auto aspect-square rounded overflow-hidden"
-              width="400"
-              height="400"
-              decoding="async"
             />
             <div className="font-display lg:pt-2 lg:pb-0 pt-5 pb-2 text-3xl text-center dark:text-white">
               Auli, 2024
@@ -109,7 +107,7 @@ export function MatrixText() {
           directionRef.current = "decreasing";
         }
       } else {
-      
+
       }
     }, 150);
 
