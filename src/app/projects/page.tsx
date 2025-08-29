@@ -1,6 +1,6 @@
 
 import Header from "../../../components/header"
-import { MatrixText } from "../component"
+import { MatrixText } from "../routeComponents"
 
 export default function Projects(){
 
