@@ -297,31 +297,31 @@ function ProjectCard({
 
 const workData = [
   {
-    logo: "/work/growthjockey.png",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLt1AlltAYEs1mvcNdykPeQePwPdUcGO-Hw&s",
     title: "Growth Jockey",
     tags: ["Software Developer-1", "Full-time"],
     role: "Jul 2024 – Present · Gurugram, India",
   },
   {
-    logo: "/work/growthjockey.png",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLt1AlltAYEs1mvcNdykPeQePwPdUcGO-Hw&s",
     title: "Growth Jockey",
     tags: ["Associate - SDE", "Full-time"],
     role: "Jan 2024 – Jun 2024 · Gurugram, India",
   },
+//   {
+//     logo: "https://res.cloudinary.com/duwfzddrs/image/upload/v1756061249/raw_bkurst.png",
+//     title: "Movie Buff",
+//     tags: ["ReactJS", "NodeJS", "Firebase"],
+//     role: "Personal Project · 2023",
+//   },
+//   {
+//     logo: "/work/mediconnect.png",
+//     title: "MediConnect",
+//     tags: ["Remix", "React", "PostgreSQL"],
+//     role: "Personal Project · 2024",
+//   },
   {
-    logo: "/work/moviebuff.png",
-    title: "Movie Buff",
-    tags: ["ReactJS", "NodeJS", "Firebase"],
-    role: "Personal Project · 2023",
-  },
-  {
-    logo: "/work/mediconnect.png",
-    title: "MediConnect",
-    tags: ["Remix", "React", "PostgreSQL"],
-    role: "Personal Project · 2024",
-  },
-  {
-    logo: "/work/sparks.png",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShRgxu9EM2Pq8Ca7C3D3l_UZlmiHetcToQvA&s",
     title: "The Sparks Foundation",
     tags: ["Web Development Intern"],
     role: "Jun 2023 – Jul 2023",

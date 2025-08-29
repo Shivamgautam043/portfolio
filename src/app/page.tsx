@@ -7,11 +7,13 @@ export default function Home() {
     return (
         <>
             <Header />
-            <HeroSection />
-             <div className="h-10 md:h-28"></div>
-            <ProjectSection/>
-            <div className="h-10 md:h-28"></div>
-            <Work/>
+            <div className="max-md:px-4">
+                <HeroSection />
+                <div className="h-10 md:h-28"></div>
+                <ProjectSection />
+                <div className="h-10 md:h-28"></div>
+                <Work />
+            </div>
             {/* <Timer /> */}
             <Footer />
         </>
