@@ -21,12 +21,19 @@ export default function Header() {
   ];
   const socialLinks = [
     {
+      label: "LeetCode",
+      href: "https://github.com/Shivamgautam043",
+      icon: "https://cdn.iconscout.com/icon/free/png-256/free-leetcode-logo-icon-svg-png-download-2944960.png",
+    },
+    {
       label: "Twitter",
       href: "https://x.com/ShivamG50827915",
+      icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-logo-icon.png",
     },
     {
       label: "GitHub",
       href: "https://github.com/Shivamgautam043",
+      icon: "https://cdn.iconscout.com/icon/free/png-256/free-github-logo-icon-svg-png-download-461797.png",
     },
   ];
   const pathname = usePathname();
@@ -51,7 +58,8 @@ export default function Header() {
           Menu
         </button>
       </div>
-      <div className="sm:hidden absolute top-0 w-full">
+      <div className="sm:hidden absolute top-0 w-full"
+        onMouseLeave={() => setOpenMenu(false)}>
         {openMenu && (
           <MobileOpenMenu socialLinks={socialLinks} navItems={navItems} pathName={pathname} />
         )}
@@ -61,12 +69,12 @@ export default function Header() {
       </div>
 
       {/* <TheameChanger /> */}
+
     </header>
   );
 }
 
-
-function MobileOpenMenu({ navItems, socialLinks, pathName }: { navItems: Array<{ label: string, href: string, }>, socialLinks: Array<{ label: string, href: string }>, pathName: string }) {
+function MobileOpenMenu({ navItems, socialLinks, pathName }: { navItems: Array<{ label: string, href: string, }>, socialLinks: Array<{ label: string, href: string, icon: string }>, pathName: string }) {
   return (
     <div
       id="menuContent"
@@ -97,11 +105,12 @@ function MobileOpenMenu({ navItems, socialLinks, pathName }: { navItems: Array<{
             <li key={link.href}>
               <a
                 href={link.href}
-                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
+                className="px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 grid grid-cols-[24px_1fr] gap-1 place-content-start place-items-center"
                 data-astro-prefetch="load"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                <img src={link.icon} alt="" style={{ width: 20, height: 20 }} />
                 {link.label}
               </a>
             </li>
