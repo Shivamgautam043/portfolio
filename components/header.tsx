@@ -15,7 +15,7 @@ export default function Header() {
   const socialLinks = [
     {
       label: "LeetCode",
-      href: "https://github.com/Shivamgautam043",
+      href: "https://leetcode.com/u/gautamshivam043",
       icon: "https://cdn.iconscout.com/icon/free/png-256/free-leetcode-logo-icon-svg-png-download-2944960.png",
     },
     {
