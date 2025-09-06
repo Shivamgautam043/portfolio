@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import { getSystemTheme } from "../utilites/utilitiesFunctions";
 import { usePathname } from "next/navigation";
+import { Open_Sans } from "next/font/google";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -44,132 +45,71 @@ export default function Header() {
             </g>
           </svg>{" "}
         </Link>
-        <button className="rounded-lg dark:bg-zinc-900 bg-white/90 px-3 py-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
+        <button
+          onClick={() => setOpenMenu(!openMenu)}
+          className="rounded-lg dark:bg-zinc-900 bg-white/90 px-3 py-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
           Menu
         </button>
       </div>
-      <div
-        id="menuContent"
-        className="hidden sm:flex flex-wrap gap-2 absolute sm:static top-20"
-      >
-        {" "}
-        <nav>
-          {" "}
-          <div className="grid grid-flow-col py-2 max-sm:grid-flow-row rounded-lg dark:bg-zinc-900 bg-white/90 px-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <div key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${
-                      isActive ? "text-teal-500" : ""
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-        </nav>{" "}
-        <nav>
-          <ul className="flex flex-col py-2 sm:py-0 sm:flex-row rounded-lg dark:bg-zinc-900 bg-white/90 px-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
-            {socialLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
-                  data-astro-prefetch="load"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+      <div className="sm:hidden absolute top-0 w-full">
+        {openMenu && (
+          <MobileOpenMenu socialLinks={socialLinks} navItems={navItems} pathName={pathname} />
+        )}
       </div>
+      <div className="max-sm:hidden">
+        <MobileOpenMenu socialLinks={socialLinks} navItems={navItems} pathName={pathname} />
+      </div>
+
       {/* <TheameChanger /> */}
     </header>
   );
 }
 
-function TheameChanger() {
-  const [currentTheme, setCurrentTheme] = useState<"light" | "system" | "dark">(
-    "dark"
-  );
 
-  const toggleTheme = () => {
-    switch (currentTheme) {
-      case "dark": {
-        setCurrentTheme("light");
-        break;
-      }
-      case "light": {
-        setCurrentTheme("system");
-        break;
-      }
-      case "system": {
-        setCurrentTheme("dark");
-        break;
-      }
-      default: {
-        setCurrentTheme("dark");
-      }
-    }
-  };
-
-  useEffect(() => {
-    console.log(getSystemTheme());
-  }, []);
-
+function MobileOpenMenu({ navItems, socialLinks, pathName }: { navItems: Array<{ label: string, href: string, }>, socialLinks: Array<{ label: string, href: string }>, pathName: string }) {
   return (
-    <div className="sm:flex-grow flex justify-end">
-      {" "}
-      <button
-        id="toggle-theme"
-        onClick={() => toggleTheme()}
-        className="relative rounded-lg dark:bg-zinc-900 bg-white/90 p-1 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur"
-      >
-        {" "}
-        <div className="bg-gray-200 dark:bg-zinc-800 p-1 flex items-center rounded-md">
-          {" "}
-          <div className="size-5 flex items-center justify-center">
-            {" "}
-            <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
-          </div>{" "}
-          <div className="size-5 flex items-center justify-center">
-            {" "}
-            <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
-          </div>{" "}
-          <div className="size-5 flex items-center justify-center">
-            {" "}
-            <div className="size-1.5 bg-zinc-500 dark:bg-zinc-700 rounded-full"></div>{" "}
-          </div>{" "}
-          <div
-            id="theme-switcher"
-            className="size-5 rounded-[5px] bg-white dark:bg-zinc-900 shadow absolute flex items-center justify-center transition-transform duration-100 ease-in-out text-zinc-600 dark:text-zinc-200"
-            style={{
-              transform:
-                currentTheme === "dark"
-                  ? "translateX(40px)"
-                  : currentTheme === "light"
-                  ? "translateX(0px)"
-                  : "translateX(20px)",
-            }}
-          >
-            {currentTheme === "dark" ? (
-              <HeaderDarkThemeIcon />
-            ) : currentTheme === "light" ? (
-              <HeaderLigthTheameIcon />
-            ) : (
-              <HeaderSystemThemeIcon />
-            )}
-          </div>{" "}
-        </div>{" "}
-      </button>
+    <div
+      id="menuContent"
+      className="sm:flex flex-wrap gap-2 absolute sm:static top-20 flex"
+    >
+      <nav>
+        <div className="grid grid-flow-col py-2 max-sm:grid-flow-row rounded-lg dark:bg-zinc-900 bg-white/90 px-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
+          {navItems.map((item) => {
+            const isActive = pathName === item.href;
+            return (
+              <div key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400 ${isActive ? "text-teal-500" : ""
+                    }`}
+                >
+                  {item.label}
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      </nav>
+
+      <nav>
+        <ul className="flex flex-col py-2 sm:py-0 sm:flex-row rounded-lg dark:bg-zinc-900 bg-white/90 px-2 text-sm font-medium dark:text-white dark:font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 dark:ring-zinc-200/10 ring-zinc-900/5 backdrop-blur">
+          {socialLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="block px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
+                data-astro-prefetch="load"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
-  );
+
+  )
 }
+
