@@ -1,14 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
-import {
-  HeaderDarkThemeIcon,
-  HeaderLigthTheameIcon,
-  HeaderSystemThemeIcon,
-} from "../utilites/svgs";
 import Link from "next/link";
-import { getSystemTheme } from "../utilites/utilitiesFunctions";
 import { usePathname } from "next/navigation";
-import { Open_Sans } from "next/font/google";
+import { useState } from "react";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -67,7 +60,6 @@ export default function Header() {
       <div className="max-sm:hidden">
         <MobileOpenMenu socialLinks={socialLinks} navItems={navItems} pathName={pathname} />
       </div>
-
       {/* <TheameChanger /> */}
 
     </header>
