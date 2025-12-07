@@ -9,9 +9,9 @@ export default function Home() {
             <Header />
             <div className="max-md:px-4">
                 <HeroSection />
-                <div className="h-10 md:h-28"></div>
+                <div className="h-9 md:h-28"></div>
                 <ProjectSection />
-                <div className="h-10 md:h-28"></div>
+                <div className="h-9 md:h-28"></div>
                 <Work />
             </div>
             {/* <Timer /> */}
