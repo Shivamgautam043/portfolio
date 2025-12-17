@@ -296,36 +296,36 @@ function ProjectCard({
 }
 
 const workData = [
-  {
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLt1AlltAYEs1mvcNdykPeQePwPdUcGO-Hw&s",
-    title: "Growth Jockey",
-    tags: ["Software Developer-1", "Full-time"],
-    role: "Jul 2024 – Present · Gurugram, India",
-  },
-  {
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLt1AlltAYEs1mvcNdykPeQePwPdUcGO-Hw&s",
-    title: "Growth Jockey",
-    tags: ["Associate - SDE", "Full-time"],
-    role: "Jan 2024 – Jun 2024 · Gurugram, India",
-  },
-//   {
-//     logo: "https://res.cloudinary.com/duwfzddrs/image/upload/v1756061249/raw_bkurst.png",
-//     title: "Movie Buff",
-//     tags: ["ReactJS", "NodeJS", "Firebase"],
-//     role: "Personal Project · 2023",
-//   },
-//   {
-//     logo: "/work/mediconnect.png",
-//     title: "MediConnect",
-//     tags: ["Remix", "React", "PostgreSQL"],
-//     role: "Personal Project · 2024",
-//   },
-  {
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShRgxu9EM2Pq8Ca7C3D3l_UZlmiHetcToQvA&s",
-    title: "The Sparks Foundation",
-    tags: ["Web Development Intern"],
-    role: "Jun 2023 – Jul 2023",
-  },
+    {
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLt1AlltAYEs1mvcNdykPeQePwPdUcGO-Hw&s",
+        title: "Growth Jockey",
+        tags: ["Software Developer-1", "Full-time"],
+        role: "Jul 2024 – Present · Gurugram, India",
+    },
+    {
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwLt1AlltAYEs1mvcNdykPeQePwPdUcGO-Hw&s",
+        title: "Growth Jockey",
+        tags: ["Associate - SDE", "Full-time"],
+        role: "Jan 2024 – Jun 2024 · Gurugram, India",
+    },
+    //   {
+    //     logo: "https://res.cloudinary.com/duwfzddrs/image/upload/v1756061249/raw_bkurst.png",
+    //     title: "Movie Buff",
+    //     tags: ["ReactJS", "NodeJS", "Firebase"],
+    //     role: "Personal Project · 2023",
+    //   },
+    //   {
+    //     logo: "/work/mediconnect.png",
+    //     title: "MediConnect",
+    //     tags: ["Remix", "React", "PostgreSQL"],
+    //     role: "Personal Project · 2024",
+    //   },
+    {
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShRgxu9EM2Pq8Ca7C3D3l_UZlmiHetcToQvA&s",
+        title: "The Sparks Foundation",
+        tags: ["Web Development Intern"],
+        role: "Jun 2023 – Jul 2023",
+    },
 ];
 
 
@@ -396,6 +396,41 @@ function WorkCard({ logo, title, tags, role }: { logo: string, title: string, ta
 }
 
 export function ContactMe() {
+    const [formData, setFormData] = useState({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // basic validation
+        if (!formData.name || !formData.email) {
+            alert("Name and Email are required");
+            return;
+        }
+
+        console.log("Lead Data:", formData);
+
+        // reset form after submit
+        setFormData({
+            name: "",
+            company: "",
+            email: "",
+            phone: "",
+        });
+    };
+
     return (
         <section className="max-w-6xl mx-auto">
             {/* Heading */}
@@ -411,7 +446,7 @@ export function ContactMe() {
 
             {/* Form */}
             <div className="max-w-xl px-4 lg:px-8 mt-10">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                     {/* Name */}
                     <div>
                         <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
@@ -419,6 +454,9 @@ export function ContactMe() {
                         </label>
                         <input
                             type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
                             placeholder="Your full name"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
                                        focus:outline-none focus:ring-2 focus:ring-zinc-900
@@ -434,6 +472,9 @@ export function ContactMe() {
                         </label>
                         <input
                             type="text"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleChange}
                             placeholder="Company or startup name"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
                                        focus:outline-none focus:ring-2 focus:ring-zinc-900
@@ -449,6 +490,9 @@ export function ContactMe() {
                         </label>
                         <input
                             type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
                             placeholder="you@company.com"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
                                        focus:outline-none focus:ring-2 focus:ring-zinc-900
@@ -464,6 +508,9 @@ export function ContactMe() {
                         </label>
                         <input
                             type="tel"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
                             placeholder="+91 XXXXX XXXXX"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
                                        focus:outline-none focus:ring-2 focus:ring-zinc-900
@@ -489,4 +536,5 @@ export function ContactMe() {
         </section>
     );
 }
+
 
