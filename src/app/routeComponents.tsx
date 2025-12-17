@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import GitHubCalendar from "react-github-calendar";
+import { useMutation } from "@tanstack/react-query";
 
 export default function HeroSection() {
     return (
@@ -395,15 +396,22 @@ function WorkCard({ logo, title, tags, role }: { logo: string, title: string, ta
     );
 }
 
+type FormDataType = {
+    name: string;
+    company: string;
+    email: string;
+    phone: string;
+};
+
 export function ContactMe() {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormDataType>({
         name: "",
         company: "",
         email: "",
         phone: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
             ...prev,
@@ -411,25 +419,54 @@ export function ContactMe() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    // 🔥 Mutation for sending lead data
+    const submitLeadMutation = useMutation({
+        mutationFn: async (data: FormDataType) => {
+            const payload = {
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                company: data.company
+            };
+
+            const res = await fetch(
+                "https://script.google.com/macros/s/AKfycbytMbasekGcPyNrEo9kCUDDuNth2MaYTWszIhlcIWoyVTSrnakTVoHg1eKGhl72XUQdgg/exec",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    mode: "no-cors",
+                    body: JSON.stringify(payload),
+                }
+            );
+
+            return res;
+        },
+        onSuccess: () => {
+            setFormData({
+                name: "",
+                company: "",
+                email: "",
+                phone: "",
+            });
+        },
+        onError: (error) => {
+            console.error("Submission failed", error);
+        },
+    });
+
+    const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        // basic validation
         if (!formData.name || !formData.email) {
             alert("Name and Email are required");
             return;
         }
 
-        console.log("Lead Data:", formData);
-
-        // reset form after submit
-        setFormData({
-            name: "",
-            company: "",
-            email: "",
-            phone: "",
-        });
+        submitLeadMutation.mutate(formData);
     };
+
 
     return (
         <section className="max-w-6xl mx-auto">
@@ -439,10 +476,11 @@ export function ContactMe() {
                     Contact Me
                 </h2>
                 <p className="text-lg text-zinc-700 leading-relaxed dark:text-zinc-400">
-                    Interested in working together or have an opportunity in mind?
-                    Share your details and I’ll get back to you shortly.
+                    Have an idea or a project in mind?
+                    Let’s turn it into something impactful.
                 </p>
             </div>
+
 
             {/* Form */}
             <div className="max-w-xl px-4 lg:px-8 mt-10">
@@ -459,7 +497,7 @@ export function ContactMe() {
                             onChange={handleChange}
                             placeholder="Your full name"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
-                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       focus:outline-none focus:ring-1 focus:ring-zinc-900
                                        dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
                                        dark:focus:ring-zinc-100"
                         />
@@ -477,7 +515,7 @@ export function ContactMe() {
                             onChange={handleChange}
                             placeholder="Company or startup name"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
-                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       focus:outline-none focus:ring-1 focus:ring-zinc-900
                                        dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
                                        dark:focus:ring-zinc-100"
                         />
@@ -495,7 +533,7 @@ export function ContactMe() {
                             onChange={handleChange}
                             placeholder="you@company.com"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
-                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       focus:outline-none focus:ring-1 focus:ring-zinc-900
                                        dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
                                        dark:focus:ring-zinc-100"
                         />
@@ -513,7 +551,7 @@ export function ContactMe() {
                             onChange={handleChange}
                             placeholder="+91 XXXXX XXXXX"
                             className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
-                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       focus:outline-none focus:ring-1 focus:ring-zinc-900
                                        dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
                                        dark:focus:ring-zinc-100"
                         />
@@ -523,13 +561,13 @@ export function ContactMe() {
                     <div className="pt-2">
                         <button
                             type="submit"
-                            className="inline-flex items-center justify-center rounded-lg
-                                       bg-zinc-900 px-6 py-2.5 text-sm font-medium text-white
-                                       hover:bg-zinc-800 transition
-                                       dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                            disabled={submitLeadMutation.isPending}
+                            className="rounded-lg bg-zinc-900 px-6 py-2.5 text-white
+                                   disabled:opacity-50 dark:bg-white dark:text-zinc-900"
                         >
-                            Send Details
+                            {submitLeadMutation.isPending ? "Sending..." : "Send Details"}
                         </button>
+
                     </div>
                 </form>
             </div>
