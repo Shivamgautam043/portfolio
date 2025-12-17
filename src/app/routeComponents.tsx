@@ -333,7 +333,7 @@ const workData = [
 export function Work() {
     return (
         <>
-            <div className="max-w-6xl mx-auto ">
+            <div className="max-w-6xl mx-auto">
                 <div className="max-w-2xl px-4 lg:px-8 text-left">
                     <div className="max-w-2xl"> <h2 className="text-3xl font-bold tracking-tight mb-3 dark:text-white">Work</h2> <p className="text-lg text-zinc-700 leading-relaxed tracking-normal dark:text-zinc-400">
                         Over the past two years, I’ve gained valuable experience working with fast-growing startups
@@ -392,6 +392,101 @@ function WorkCard({ logo, title, tags, role }: { logo: string, title: string, ta
                 </p>
             </div>
         </div>
+    );
+}
+
+export function ContactMe() {
+    return (
+        <section className="max-w-6xl mx-auto">
+            {/* Heading */}
+            <div className="max-w-2xl px-4 lg:px-8 text-left">
+                <h2 className="text-3xl font-bold tracking-tight mb-3 dark:text-white">
+                    Contact Me
+                </h2>
+                <p className="text-lg text-zinc-700 leading-relaxed dark:text-zinc-400">
+                    Interested in working together or have an opportunity in mind?
+                    Share your details and I’ll get back to you shortly.
+                </p>
+            </div>
+
+            {/* Form */}
+            <div className="max-w-xl px-4 lg:px-8 mt-10">
+                <form className="space-y-6">
+                    {/* Name */}
+                    <div>
+                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Your full name"
+                            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
+                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
+                                       dark:focus:ring-zinc-100"
+                        />
+                    </div>
+
+                    {/* Company */}
+                    <div>
+                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                            Company
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Company or startup name"
+                            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
+                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
+                                       dark:focus:ring-zinc-100"
+                        />
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            placeholder="you@company.com"
+                            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
+                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
+                                       dark:focus:ring-zinc-100"
+                        />
+                    </div>
+
+                    {/* Phone */}
+                    <div>
+                        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                            Phone
+                        </label>
+                        <input
+                            type="tel"
+                            placeholder="+91 XXXXX XXXXX"
+                            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm
+                                       focus:outline-none focus:ring-2 focus:ring-zinc-900
+                                       dark:border-zinc-700 dark:bg-zinc-900 dark:text-white
+                                       dark:focus:ring-zinc-100"
+                        />
+                    </div>
+
+                    {/* Submit */}
+                    <div className="pt-2">
+                        <button
+                            type="submit"
+                            className="inline-flex items-center justify-center rounded-lg
+                                       bg-zinc-900 px-6 py-2.5 text-sm font-medium text-white
+                                       hover:bg-zinc-800 transition
+                                       dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                        >
+                            Send Details
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
     );
 }
 

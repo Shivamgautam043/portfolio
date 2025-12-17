@@ -1,6 +1,6 @@
 import { Footer } from "../../components/footer";
 import Header from "../../components/header";
-import HeroSection, { ProjectSection, Work } from "./routeComponents";
+import HeroSection, { ContactMe, ProjectSection, Work } from "./routeComponents";
 
 export default function Home() {
     return (
@@ -12,6 +12,8 @@ export default function Home() {
                 <ProjectSection />
                 <div className="h-9 md:h-28"></div>
                 <Work />
+                <div className="h-9 md:h-28"></div>
+                <ContactMe />
             </div>
             {/* <Timer /> */}
             <Footer />
