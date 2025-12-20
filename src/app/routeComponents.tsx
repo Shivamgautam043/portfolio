@@ -136,7 +136,8 @@ export function ProjectSection() {
                         Overtime I have worked on and built multiple projects, some during work,
                         some outside. Here{"'"}s a humble list of those, several of them are
                         open-source. If you{"'"}re inspired by what you see, don{"'"}t hesitate to dive
-                        into the code and share your ideas for improvements.
+                        into the code and share your ideas for improvement
+                        .
                     </p>
                 </div>
             </div>
