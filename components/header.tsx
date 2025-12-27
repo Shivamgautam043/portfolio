@@ -19,14 +19,19 @@ export default function Header() {
       icon: "https://cdn.iconscout.com/icon/free/png-256/free-leetcode-logo-icon-svg-png-download-2944960.png",
     },
     {
-      label: "Twitter",
-      href: "https://x.com/ShivamG50827915",
-      icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-logo-icon.png",
-    },
-    {
       label: "GitHub",
       href: "https://github.com/Shivamgautam043",
       icon: "https://cdn.iconscout.com/icon/free/png-256/free-github-logo-icon-svg-png-download-461797.png",
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/shivam42/",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/2048px-LinkedIn_icon.svg.png",
+    },
+    {
+      label: "Twitter",
+      href: "https://x.com/ShivamG50827915",
+      icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/x-social-media-logo-icon.png",
     },
   ];
   const pathname = usePathname();

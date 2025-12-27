@@ -48,11 +48,11 @@ export default function HeroSection() {
                     <div className="rounded-lg shadow-lg border border-gray-100 dark:border-gray-100/10 rotate-2 p-2 dark:bg-zinc-900 bg-white lg:max-w-72 w-full">
                         <div className="overflow-hidden w-full">
                             <img
-                                src="https://res.cloudinary.com/duwfzddrs/image/upload/v1766776817/meWithBike_mysfuv.webp"
+                                src="https://res.cloudinary.com/duwfzddrs/image/upload/v1766823462/picccc_a0wide.png"
                                 alt="Shivam, standing on a cliff facing the Himalayas."
                                 // width={400}
                                 // height={400}
-                                className="w-full rounded scale-125"
+                                className="w-full rounded scale-110"
                             /> </div>
                         {/* <div className="font-display lg:pt-2 lg:pb-0 pt-5 pb-2 text-3xl text-center dark:text-white">
                             Auli, 2024
